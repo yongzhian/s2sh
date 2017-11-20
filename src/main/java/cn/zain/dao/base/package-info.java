@@ -1,0 +1,2 @@
+package cn.zain.dao.base;
+//Spring中的HibernateDaoSupport通过配置文件注入后，在每个DaoImpl中均需要配置，故使用此包进行基础注入hibernateTemplate
