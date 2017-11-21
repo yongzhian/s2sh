@@ -17,6 +17,7 @@ import javax.annotation.Resource;
 
 /**
  * Created by Zain 2016/9/7 .
+ * @author Zain
  */
 @ParentPackage("project-default")
 @Namespace("/sysRole")
@@ -26,7 +27,6 @@ import javax.annotation.Resource;
 })
 @Controller
 public class SysRoleAction extends BaseAction implements ModelDriven {
-    private Logger logger = LogManager.getLogger(SysRoleAction.class);
     @Resource
     private SysNodeService sysNodeService;
     private SysNode sysNode;
@@ -39,7 +39,7 @@ public class SysRoleAction extends BaseAction implements ModelDriven {
      * @params
      */
     public String list() {
-        logger.debug(sysNode);
+        logger.debug("查询节点列表...");
         return "grid";
     }
 

@@ -6,12 +6,10 @@ package cn.zain.action;
 
 import cn.zain.action.base.BaseAction;
 import cn.zain.model.po.SysNode;
-import cn.zain.model.po.SysUser;
 import cn.zain.service.SysNodeService;
 import com.opensymphony.xwork2.ModelDriven;
-import com.opensymphony.xwork2.config.providers.XmlConfigurationProvider;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 
@@ -20,7 +18,6 @@ import javax.annotation.Resource;
  * @author Zain
  */
 public class SysNodeAction extends BaseAction implements ModelDriven {
-    private Logger logger = LogManager.getLogger(SysNodeAction.class);
     @Resource
     private SysNodeService sysNodeService;
     private SysNode sysNode;
@@ -33,7 +30,7 @@ public class SysNodeAction extends BaseAction implements ModelDriven {
      * @params
      */
     public String list() {
-        logger.debug(sysNode);
+        logger.debug("查询用户节点列表...");
         return SUCCESS;
     }
 

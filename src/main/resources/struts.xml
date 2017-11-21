@@ -32,17 +32,17 @@
 
     <!-- package管理一组业务功能相关的action,namespace属性用于定义该包的命名空间,命名空间作用为访问该包下的action路径的一部分
     name只是进行唯一标识，不作为访问路径，
-    访问默认的execute http://localhost:8080/s2sh/sysuser/sysUser.do
-    如下访问路径为http://localhost:8080/s2sh/sysuser/sysUserlogin.do，区分大小写-->
-    <package name="sysUser" namespace="/sysuser" extends="struts-default">
+    访问默认的execute() http://localhost:8080/s2sh/sys/user.do
+    如下访问路径为http://localhost:8080/s2sh/sysuser/userlogin.do或http://localhost:8080/s2sh/sys/user!login.do，区分大小写-->
+    <package name="sys" namespace="/sys" extends="struts-default">
         <global-allowed-methods>regex:.*</global-allowed-methods>
-        <action name="sysUser*" class="cn.zain.action.SysUserAction" method="{1}">
+        <action name="user*" class="cn.zain.action.SysUserAction" method="{1}">
             <result name="success">/jsp/welcome.jsp</result>
             <result name="login">/index.jsp</result>
             <!-- 或者<allowed-methods>login</allowed-methods>-->
         </action>
     </package>
-    <package name="node" namespace="/sysNode" extends="struts-default">
+    <package name="sys" namespace="/sys" extends="struts-default">
         <global-allowed-methods>regex:.*</global-allowed-methods>
         <action name="*_*" class="cn.zain.action.{1}Action" method="{2}">
             <result name="success">/jsp/sys/sysnode.jsp</result>

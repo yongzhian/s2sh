@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
-<!DOCTYPE>
+
 <html>
 <head>
 
@@ -17,7 +17,7 @@
 <body>
 
 
-<s:form action="sysUser/user/login.do" method="post">
+<s:form action="sys/userlogin.do" method="post">
     <s:label value="系统登陆"></s:label>
     <s:textfield name="username" label="账号"/>
     <s:password name="password" label="密码"/>

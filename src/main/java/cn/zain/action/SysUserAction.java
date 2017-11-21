@@ -9,19 +9,17 @@ import cn.zain.model.po.SysNode;
 import cn.zain.model.po.SysUser;
 import cn.zain.service.SysUserService;
 import com.opensymphony.xwork2.ModelDriven;
-import com.opensymphony.xwork2.config.providers.XmlConfigurationProvider;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.spi.ExtendedLogger;
 
 import javax.annotation.Resource;
 
 /**
  * Created by Zain 2016/9/7 .
+ *
  * @author Zain
  */
 
 public class SysUserAction extends BaseAction implements ModelDriven {
-    private Logger logger = LogManager.getLogger(SysUserAction.class);
     @Resource
     private SysUserService sysUserService;
     private SysUser sysUser;
@@ -29,23 +27,23 @@ public class SysUserAction extends BaseAction implements ModelDriven {
 
     @Override
     public String execute() throws Exception {
-        logger.info("默认的exe");
-        XmlConfigurationProvider l;
+        logger.debug("execute...");
+        ExtendedLogger extendedLogger;
         return SUCCESS;
     }
 
     /**
-     * 功能说明 ：登录
-     *
+     * 功能说明 ： 登录
      * @return
-     * @author Zain 2016/9/14 10:22
-     * @params
      */
     public String login() {
-        logger.debug(sysUser);
-        if (null != sysUser && "haha".equals(sysUser.getUsername())) {
-            logger.info("ok");
-            sysUser.setFullName("wod");
+        logger.debug("用户登录({})...", sysUser);
+        if(null == sysUser){
+            return LOGIN;
+        }
+        SysUser user = sysUserService.getSysUserByUsername(sysUser.getUsername());
+        if (null != user && user.getPassword().equals(sysUser.getPassword())) {
+            logger.debug("登录成功,");
             request.setAttribute("sysUser", sysUser);
             return SUCCESS;
         }
@@ -60,7 +58,7 @@ public class SysUserAction extends BaseAction implements ModelDriven {
      * @params
      */
     public String getUserInfo() {
-        logger.debug(sysUser);
+        logger.debug("查询用户信息getUserInfo...");
         if (null != sysUser && "haha".equals(sysUser.getUsername())) {
             logger.info("ok");
             sysUser.setFullName("wod");
