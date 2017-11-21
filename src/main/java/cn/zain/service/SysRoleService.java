@@ -1,24 +1,18 @@
 package cn.zain.service;
 
+import cn.zain.model.po.SysRole;
 import cn.zain.model.po.SysUser;
+
+import java.util.List;
 
 /**
  * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
+ * @author Zain
  */
 public interface SysRoleService {
     /**
-     * 功能说明 ：根据系统用户id查询用户信息
-     * @author	Zain 2016/9/6 15:30
+     * 功能说明 ：查询所有的用户角色
      * @return
-     * @params
      */
-    public SysUser getSysUserById(long sysUserId);
-
-    /**
-     * 功能说明 ：根据用户姓名查询用户信息
-     * @author	Zain 2016/9/6 15:39
-     * @return
-     * @params
-     */
-    public SysUser getSysUserByUsername(String username);
+    List<SysRole> list();
 }

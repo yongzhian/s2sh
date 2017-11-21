@@ -7,8 +7,6 @@ import java.util.Set;
 /**
  * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
  */
-@Entity
-@Table(name = "sys_user", schema = "luman", catalog = "")
 public class SysUser {
     private Long id;
     private String username;

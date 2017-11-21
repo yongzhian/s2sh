@@ -8,7 +8,7 @@ import java.util.Map;
  * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
  * @author Zain
  */
-public class TemplateDaoImpl extends  AbstractTemplateDao {
+public class TemplateDaoImpl<T extends Serializable, PK extends Serializable> extends  AbstractTemplateDao<T, PK> {
 
     @Override
     public List findEntityByPageConditionList(Map map, int begin, int max) {

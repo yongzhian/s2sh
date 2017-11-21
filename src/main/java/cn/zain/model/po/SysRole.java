@@ -1,5 +1,9 @@
 package cn.zain.model.po;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Set;
@@ -8,7 +12,7 @@ import java.util.Set;
  * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
  */
 @Entity
-@Table(name = "sys_role", schema = "luman", catalog = "")
+@Table(name = "sys_role", schema = "s2sh", catalog = "")
 public class SysRole {
     private Long id;
     private String roleCode;
@@ -70,16 +74,30 @@ public class SysRole {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         SysRole sysRole = (SysRole) o;
 
-        if (id != null ? !id.equals(sysRole.id) : sysRole.id != null) return false;
-        if (roleCode != null ? !roleCode.equals(sysRole.roleCode) : sysRole.roleCode != null) return false;
-        if (roleName != null ? !roleName.equals(sysRole.roleName) : sysRole.roleName != null) return false;
-        if (isValid != null ? !isValid.equals(sysRole.isValid) : sysRole.isValid != null) return false;
-        if (createTime != null ? !createTime.equals(sysRole.createTime) : sysRole.createTime != null) return false;
+        if (id != null ? !id.equals(sysRole.id) : sysRole.id != null) {
+            return false;
+        }
+        if (roleCode != null ? !roleCode.equals(sysRole.roleCode) : sysRole.roleCode != null) {
+            return false;
+        }
+        if (roleName != null ? !roleName.equals(sysRole.roleName) : sysRole.roleName != null) {
+            return false;
+        }
+        if (isValid != null ? !isValid.equals(sysRole.isValid) : sysRole.isValid != null) {
+            return false;
+        }
+        if (createTime != null ? !createTime.equals(sysRole.createTime) : sysRole.createTime != null) {
+            return false;
+        }
 
         return true;
     }
@@ -95,6 +113,7 @@ public class SysRole {
     }
 
     @ManyToMany(mappedBy = "roles")
+    @Fetch(FetchMode.SELECT)
     public Set<SysUser> getUsers() {
         return users;
     }
@@ -104,7 +123,7 @@ public class SysRole {
     }
 
     @ManyToMany
-    @JoinTable(name = "sys_role_node", catalog = "", schema = "luman", joinColumns = @JoinColumn(name = "sys_role_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "sys_node_id", referencedColumnName = "id", nullable = false))
+    @JoinTable(name = "sys_role_node", catalog = "", schema = "s2sh", joinColumns = @JoinColumn(name = "sys_role_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "sys_node_id", referencedColumnName = "id", nullable = false))
     public Set<SysNode> getNodes() {
         return nodes;
     }
@@ -121,8 +140,8 @@ public class SysRole {
                 ", roleName='" + roleName + '\'' +
                 ", isValid='" + isValid + '\'' +
                 ", createTime=" + createTime +
-                ", users=" +  (users == null ? "null" : users.size())  +
-                ", nodes=" +  (nodes == null ? "null" : nodes.size())  +
+                ", users=" + (users == null ? "null" : users.size()) +
+                ", nodes=" + (nodes == null ? "null" : nodes.size()) +
                 '}';
     }
 }

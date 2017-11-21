@@ -21,12 +21,12 @@ public class SysUserDaoImpl extends TemplateDaoImpl implements SysUserDao {
 
     @Override
     public SysUser getSysUserById(Long sysUserId) {
-        return new SysUser();
+        return getHibernateTemplate().get(SysUser.class, sysUserId);
     }
 
     @Override
     public SysUser getSysUserByUsername(String username) {
-        List<SysUser> list = (List<SysUser>) getHibernateTemplate().find("from cn.zain.model.po.SysUser", username);
+        List<SysUser> list = (List<SysUser>) getHibernateTemplate().find("from cn.zain.model.po.SysUser where username = ?", username);
         if (null != list && list.size() == 1) {
             return list.get(0);
         }

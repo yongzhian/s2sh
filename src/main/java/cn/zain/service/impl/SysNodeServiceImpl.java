@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
@@ -15,9 +16,17 @@ import javax.annotation.Resource;
 @Service
 public class SysNodeServiceImpl implements SysNodeService {
     private Logger logger = LogManager.getLogger(SysNodeServiceImpl.class);
+
     @Resource
     private SysNodeDao sysNodeDao;
-    public SysNode getSysNodeById(long sysNodeId) {
+
+    @Override
+    public SysNode getSysNodeById(Long sysNodeId) {
         return sysNodeDao.getSysNodeById(sysNodeId);
+    }
+
+    @Override
+    public List<SysNode> list() {
+        return sysNodeDao.list();
     }
 }

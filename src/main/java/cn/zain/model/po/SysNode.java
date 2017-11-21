@@ -8,7 +8,7 @@ import java.util.Set;
  * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
  */
 @Entity
-@Table(name = "sys_node", schema = "luman", catalog = "")
+@Table(name = "sys_node", schema = "s2sh", catalog = "")
 public class SysNode {
     private Long id;
     private String nodeCode;

@@ -20,13 +20,14 @@ public class SysUserServiceImpl implements SysUserService {
     @Resource
     private SysUserDao sysUserDao;
 
-    public SysUser getSysUserById(long sysUserId) {
-        return null;
+    @Override
+    public SysUser getSysUserById(Long sysUserId) {
+        return sysUserDao.getSysUserById(sysUserId);
     }
 
     @Override
     public SysUser getSysUserByUsername(String username) {
-        if(StringUtils.isBlank(username)){
+        if (StringUtils.isBlank(username)) {
             logger.warn("获取用户信息的用户名不能为空,username : " + username);
             return null;
         }

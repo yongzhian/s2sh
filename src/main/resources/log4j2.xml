@@ -24,7 +24,7 @@
             <appender-ref ref="RollingFile"/>
         </logger>
         <!--所有的logger继承root-->
-        <root level="debug">
+        <root level="info">
             <appender-ref ref="Console"/>
         </root>
     </loggers>

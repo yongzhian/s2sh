@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="cn.zain.model.po.SysUser" table="sys_user" schema="luman">
+    <class name="cn.zain.model.po.SysUser" table="sys_user" schema="s2sh" lazy="false" >
         <id name="id">
             <column name="id" sql-type="bigint(20)"/>
         </id>
@@ -32,7 +32,7 @@
         <property name="lastLoginIp">
             <column name="last_login_ip" sql-type="varchar(50)" length="50" not-null="true"/>
         </property>
-        <set name="roles" table="sys_user_role" schema="luman" lazy="false">
+        <set name="roles" table="sys_user_role" schema="s2sh" lazy="false">
             <key>
                 <column name="sys_user_id" not-null="true"/>
             </key>

@@ -5,15 +5,13 @@ import cn.zain.dao.base.TemplateDaoImpl;
 import cn.zain.model.po.SysNode;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hibernate.SessionFactory;
-import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
+ *
  * @author Zain
  */
 @Repository
@@ -21,9 +19,13 @@ public class SysNodeDaoImpl extends TemplateDaoImpl implements SysNodeDao {
     private Logger logger = LogManager.getLogger(SysNodeDaoImpl.class);
 
     @Override
-    @Transactional
     public SysNode getSysNodeById(Long sysNodeId) {
-        return null;
+        return getHibernateTemplate().get(SysNode.class, sysNodeId);
+    }
+
+    @Override
+    public List<SysNode> list() {
+        return (List<SysNode>) getHibernateTemplate().find("from cn.zain.model.po.SysNode");
     }
 
 }

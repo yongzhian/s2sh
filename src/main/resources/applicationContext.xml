@@ -70,6 +70,8 @@
                 <value>cn.zain.model.po</value>
             </list>
         </property>
+        <!-- //加载实体类的映射文件位置及名称 -->
+        <property name="mappingLocations" value="classpath:cn/zain/model/po/*hbm.xml"></property>
     </bean>
 
 

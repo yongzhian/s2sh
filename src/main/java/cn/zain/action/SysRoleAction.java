@@ -7,9 +7,7 @@ package cn.zain.action;
 import cn.zain.action.base.BaseAction;
 import cn.zain.model.po.SysNode;
 import cn.zain.service.SysNodeService;
-import com.opensymphony.xwork2.ModelDriven;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import cn.zain.service.SysRoleService;
 import org.apache.struts2.convention.annotation.*;
 import org.springframework.stereotype.Controller;
 
@@ -17,19 +15,18 @@ import javax.annotation.Resource;
 
 /**
  * Created by Zain 2016/9/7 .
+ *
  * @author Zain
  */
 @ParentPackage("project-default")
-@Namespace("/sysRole")
+@Namespace("/sys/role")
 @Results({
         @Result(name = "grid", location = "/jsp/sys/sysrole/grid.jsp")
-
 })
 @Controller
-public class SysRoleAction extends BaseAction implements ModelDriven {
+public class SysRoleAction extends BaseAction {
     @Resource
-    private SysNodeService sysNodeService;
-    private SysNode sysNode;
+    private SysRoleService sysRoleService;
 
     /**
      * 功能说明 ：节点列表
@@ -40,18 +37,8 @@ public class SysRoleAction extends BaseAction implements ModelDriven {
      */
     public String list() {
         logger.debug("查询节点列表...");
+        request.setAttribute("list", sysRoleService.list());
         return "grid";
     }
 
-    @Override
-    public Object getModel() {
-        if (null == sysNode) {
-            sysNode = new SysNode();
-        }
-        return sysNode;
-    }
-
-    public SysNode getSysNode() {
-        return sysNode;
-    }
 }
