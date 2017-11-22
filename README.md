@@ -31,4 +31,5 @@
 ##### 版本说明
 
 struts2与spring不整合相互之间也能工作，但是整合之后可以将struts2中的对象交给spring容器管理， 否则struts2中的对象属性因为不在容器中而无法管理，不能自动注入从而导致空指针等常见异常。
+hibernate5.2 版本开始只支持java8 https://github.com/hibernate/hibernate-orm/wiki/Migration-Guide---5.2
 struts2.5.13+spring4.3.2.RELEASE+hibernate5.2.12.Final
