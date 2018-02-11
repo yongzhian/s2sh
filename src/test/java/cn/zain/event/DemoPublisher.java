@@ -18,15 +18,16 @@ public class DemoPublisher {
     @Autowired
     ApplicationContext context ;
 
-    public void publish(String msg){
-        context.publishEvent(new DemoEvent(this,msg));
+    public void publish(String msg,Student student){
+        context.publishEvent(new DemoEvent(this,msg,student));
+        System.out.println("你想什么呢");
     }
 
     @Test
     public void demoTest() throws Exception {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DemoPublisher.class);
         DemoPublisher demoPublisher = context.getBean(DemoPublisher.class);
-        demoPublisher.publish("hello my boy。");
+        demoPublisher.publish("hello my boy。",new Student());
         context.close();
     }
 }

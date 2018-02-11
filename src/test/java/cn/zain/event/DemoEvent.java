@@ -8,10 +8,12 @@ import org.springframework.context.ApplicationEvent;
 public class DemoEvent extends ApplicationEvent {
 
     private String msg;
+    private  Student student;
 
-    public DemoEvent(Object source,String msg) {
+    public DemoEvent(Object source, String msg, Student student) {
         super(source);
         this.msg = msg;
+        this.student = student;
     }
 
     public String getMsg() {
@@ -20,5 +22,13 @@ public class DemoEvent extends ApplicationEvent {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }

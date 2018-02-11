@@ -15,6 +15,10 @@ public class DemoListener implements ApplicationListener<DemoEvent> {
 
     @Override
     public void onApplicationEvent(DemoEvent demoEvent) {//消息接受处理
-        logger.info("事件 " + demoEvent.getMsg()); //要执行的动作
+        logger.info("事件 " + demoEvent.getMsg() + demoEvent.getStudent()); //要执行的动作
+        demoEvent.getStudent().setName("asd");
+        long s = 5/0;
+        logger.info("事件后 " + demoEvent.getMsg() + demoEvent.getStudent()); //要执行的动作
+
     }
 }
